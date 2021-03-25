@@ -11,6 +11,7 @@ RUN apt-get update && apt-get install -y \
     x11vnc \
     xvfb \
     supervisor \
+    net-tools \
     && wget -q $KOREADERURL -O /tmp/koreader.deb \
     && apt install -y /tmp/koreader.deb \
     && rm -rf /var/lib/apt/lists/* \
