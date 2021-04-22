@@ -2,7 +2,7 @@ FROM debian:buster
 LABEL maintainer Ward Wouts <ward@wouts.nl>
 
 ENV LANG=en_US.UTF-8 LANGUAGE=en_US.UTF-8 LC_ALL=C.UTF-8 DISPLAY=:0.0 CURSOR="-nocursor"
-ARG KOREADERURL=https://github.com/koreader/koreader/releases/download/v2021.03/koreader-2021.03-amd64.deb
+ARG KOREADERURL=https://github.com/koreader/koreader/releases/download/v2021.04/koreader-2021.04-amd64.deb
 
 # Install koreader and dependencies.
 RUN apt-get update && apt-get install -y \
@@ -28,6 +28,7 @@ RUN adduser user \
 RUN ln -s /usr/share/novnc/vnc.html /usr/share/novnc/index.html \
     && mkdir -p /books /config \
     && mkdir -p /home/user/.config \
+    && mkdir -p /opt \
     && ln -s /config /home/user/.config/koreader \
     && x11vnc -storepasswd koreader /passwd \
     && sed -i "s/UI.initSetting('resize', 'off');/UI.initSetting('resize', 'scale');/" /usr/share/novnc/app/ui.js \
@@ -37,6 +38,9 @@ RUN ln -s /usr/share/novnc/vnc.html /usr/share/novnc/index.html \
 # Configure supervisord.
 COPY supervisord.conf /etc/supervisor/supervisord.conf
 ENTRYPOINT [ "supervisord", "-c", "/etc/supervisor/supervisord.conf" ]
+
+# Add default settings file to set HOME dir to /books
+COPY start_koreader settings.reader.lua /opt/
 
 EXPOSE 8080
 
