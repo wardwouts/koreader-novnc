@@ -2,18 +2,21 @@ FROM debian:buster
 LABEL maintainer Ward Wouts <ward@wouts.nl>
 
 ENV LANG=en_US.UTF-8 LANGUAGE=en_US.UTF-8 LC_ALL=C.UTF-8 DISPLAY=:0.0 CURSOR="-nocursor"
-ARG KOREADERURL=https://github.com/koreader/koreader/releases/download/v2021.05/koreader-2021.05-amd64.deb
+ARG KOREADERURL=https://github.com/koreader/koreader/releases/download/v2021.06/koreader-2021.06-amd64.deb
 
 # Install koreader and dependencies.
-RUN apt-get update && apt-get install -y \
-    novnc \
-    wget \
-    x11vnc \
-    xvfb \
-    supervisor \
-    net-tools \
+RUN apt-get update \
+    && apt-get upgrade -y \
+    && apt-get autoremove -y \
+    && apt-get install -y \
+        novnc \
+        wget \
+        x11vnc \
+        xvfb \
+        supervisor \
+        net-tools \
     && wget -q $KOREADERURL -O /tmp/koreader.deb \
-    && apt install -y /tmp/koreader.deb \
+    && apt-get install -y /tmp/koreader.deb \
     && rm -rf /var/lib/apt/lists/* \
     && rm /tmp/koreader.deb
 
