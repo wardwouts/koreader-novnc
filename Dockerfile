@@ -2,7 +2,7 @@ FROM debian:buster
 LABEL maintainer Ward Wouts <ward@wouts.nl>
 
 ENV LANG=en_US.UTF-8 LANGUAGE=en_US.UTF-8 LC_ALL=C.UTF-8 DISPLAY=:0.0 CURSOR="-nocursor"
-ARG KOREADERURL=https://github.com/koreader/koreader/releases/download/v2021.06/koreader-2021.06-amd64.deb
+ARG KOREADERURL=https://github.com/koreader/koreader/releases/download/v2021.07/koreader-2021.07-amd64.deb
 
 # Install koreader and dependencies.
 RUN apt-get update \
