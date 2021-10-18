@@ -22,9 +22,9 @@ RUN apt-get update \
     && rm /tmp/koreader.deb
 
 # Install koreader icons over novnc icons
-COPY icons/* /usr/share/novnc/app/images/icons/
+COPY resources/icons/* /usr/share/novnc/app/images/icons/
 # Install koreader logo
-COPY koreader-logo.svg /usr/share/novnc/app/images/
+COPY resources/koreader-logo.svg /usr/share/novnc/app/images/
 
 
 ENV HOME /home/user
@@ -50,11 +50,11 @@ RUN ln -s /usr/share/novnc/vnc.html /usr/share/novnc/index.html \
     && chown -R user:user $HOME /config /passwd
 
 # Configure supervisord.
-COPY supervisord.conf /etc/supervisor/supervisord.conf
+COPY resources/supervisord.conf /etc/supervisor/supervisord.conf
 ENTRYPOINT [ "supervisord", "-c", "/etc/supervisor/supervisord.conf" ]
 
 # Add default settings file to set HOME dir to /books
-COPY start_koreader settings.reader.lua /opt/
+COPY resources/start_koreader resources/settings.reader.lua /opt/
 
 EXPOSE 8080
 
