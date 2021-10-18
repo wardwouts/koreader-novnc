@@ -44,7 +44,7 @@ RUN ln -s /usr/share/novnc/vnc.html /usr/share/novnc/index.html \
     && x11vnc -storepasswd koreader /passwd \
     && sed -i "s/UI.initSetting('resize', 'off');/UI.initSetting('resize', 'scale');/" /usr/share/novnc/app/ui.js \
     && sed -i "s/#noVNC_control_bar_anchor {/#noVNC_control_bar_anchor {\n  display: none;/" /usr/share/novnc/app/styles/base.css \
-    && sed -i 's/<div class="noVNC_logo" translate="no"><span>no<\/span>VNC<\/div>/<img src="app\/images\/koreader-logo.svg">/' /usr/share/novnc/vnc.html \
+    && sed -i 's/<div class="noVNC_logo" translate="no"><span>no<\/span>VNC<\/div>/<div class="noVNC_logo" translate="no"><img src="app\/images\/koreader-logo.svg" width=80%><\/div>/' /usr/share/novnc/vnc.html \
     && sed -i 's/background-color:#494949;/background-color:#DDDDDD;/' /usr/share/novnc/app/styles/base.css \
     && sed -i 's/background-color: #313131;/background-color:#CCCCCC;/' /usr/share/novnc/app/styles/base.css \
     && chown -R user:user $HOME /config /passwd
