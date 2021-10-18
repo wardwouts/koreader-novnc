@@ -21,6 +21,9 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/* \
     && rm /tmp/koreader.deb
 
+# Install koreader icons over novnc icons
+COPY icons/* /usr/share/novnc/app/images/icons/
+
 ENV HOME /home/user
 
 RUN adduser user \
