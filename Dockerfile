@@ -2,7 +2,7 @@ FROM debian:buster-slim
 LABEL maintainer Ward Wouts <ward@wouts.nl>
 
 ENV LANG=en_US.UTF-8 LANGUAGE=en_US.UTF-8 LC_ALL=C.UTF-8 DISPLAY=:0.0 CURSOR="-nocursor"
-ARG VERSION=2021.08
+ARG VERSION=0
 ARG KOREADERURL=https://github.com/koreader/koreader/releases/download/v$VERSION/koreader-$VERSION-amd64.deb
 
 # Install koreader and dependencies.
