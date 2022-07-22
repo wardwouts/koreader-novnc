@@ -35,10 +35,10 @@ docker run -p 8080:8080 --env CURSOR="" -v mybooks:/books -v koreader_config:/co
 ```
 
 ### Geometry
-The default geometry used for Xvfb is "600x800x24". You can specify a different one via the `GEOMETRY` environment variable:
+The default geometry used is "600x800". You can specify a different one via the `EMULATE_READER_W` and `EMULATE_READER_H` environment variables:
 
 
 ```
-docker run -p 8080:8080 --env GEOMETRY="800x1000x24" -v mybooks:/books -v koreader_config:/config -v passwd:/passwd --name koreader wardwouts/koreader-novnc
+docker run -p 8080:8080 --env EMULATE_READER_W="1400" --env EMULATE_READER_H="600" -v mybooks:/books -v koreader_config:/config -v passwd:/passwd --name koreader wardwouts/koreader-novnc
 ```
 

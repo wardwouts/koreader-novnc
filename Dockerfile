@@ -1,7 +1,8 @@
 FROM debian:bullseye-slim
 LABEL maintainer Ward Wouts <ward@wouts.nl>
 
-ENV LANG=en_US.UTF-8 LANGUAGE=en_US.UTF-8 LC_ALL=C.UTF-8 DISPLAY=:0.0 CURSOR="-nocursor" GEOMETRY="600x800x24"
+ENV LANG=en_US.UTF-8 LANGUAGE=en_US.UTF-8 LC_ALL=C.UTF-8 DISPLAY=:0.0 CURSOR="-nocursor"
+ENV EMULATE_READER_W="600" EMULATE_READER_H="800"
 ARG VERSION=0
 ARG KOREADERURL=https://github.com/koreader/koreader/releases/download/v$VERSION/koreader-$VERSION-amd64.deb
 
