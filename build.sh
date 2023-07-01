@@ -38,7 +38,7 @@ if [ $BUILDAH_VERSION -lt 1190 ]; then
   exit
 fi
 
-buildah manifest create "${MANIFEST}"
+#buildah manifest create "${MANIFEST}"
 
 for arch in "${!architectures[@]}"; do
   echo "Creating image for architecture ${arch}"
