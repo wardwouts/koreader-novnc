@@ -33,7 +33,6 @@ By default no X-cursor will be shown. Which is nice for reading on a mobile phon
 ```
 docker run -p 8080:8080 --env CURSOR="" -v mybooks:/books -v koreader_config:/config -v passwd:/passwd --name koreader wardwouts/koreader-novnc
 ```
-
 ### Geometry
 The default geometry used is "600x800". You can specify a different one via the `EMULATE_READER_W` and `EMULATE_READER_H` environment variables:
 
@@ -42,3 +41,5 @@ The default geometry used is "600x800". You can specify a different one via the 
 docker run -p 8080:8080 --env EMULATE_READER_W="1400" --env EMULATE_READER_H="600" -v mybooks:/books -v koreader_config:/config -v passwd:/passwd --name koreader wardwouts/koreader-novnc
 ```
 
+### PASSWD
+By default the varialbe `PASSWD` has the value `-rfbauth /passwd`. There could be cases where you want to overrule this, for instance when an alternative authentication layer is used (`-nopw`).

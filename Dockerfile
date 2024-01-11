@@ -3,6 +3,7 @@ LABEL maintainer Ward Wouts <ward@wouts.nl>
 
 ENV LANG=en_US.UTF-8 LANGUAGE=en_US.UTF-8 LC_ALL=C.UTF-8 DISPLAY=:0.0 CURSOR="-nocursor"
 ENV EMULATE_READER_W="600" EMULATE_READER_H="800"
+ENV PASSWD="-rbfauth /passwd"
 ARG VERSION=0
 ARG ARCH=wrong
 ARG KOREADERURL=https://github.com/koreader/koreader/releases/download/v$VERSION/koreader-$VERSION-$ARCH.deb
