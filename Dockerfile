@@ -19,6 +19,7 @@ RUN apt-get update \
         xvfb \
         supervisor \
         net-tools \
+        iputils-ping \
     && wget -q $KOREADERURL -O /tmp/koreader.deb \
     && apt-get install -y /tmp/koreader.deb \
     && rm -rf /var/lib/apt/lists/* \
