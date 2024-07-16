@@ -19,21 +19,18 @@ unset TMPDIR # othewise buildah will try to use that and it doesn't work with an
 # koreader-2023.04-armhf.deb - arm32v7
 
 # Setup mapping from debian platform names to koreader platform names
-declare -A architectures=( [linux/amd64]="amd64" [linux/arm64]="arm64" )
+declare -A architectures=( [linux/amd64]="x86_64" [linux/arm64]="armv7l" )
 
 # Set your manifest name
 MANIFEST="koreader-novnc"
 
 # Set the required variables
 BUILD_PATH="."
-REGISTRY="localhost"
-REGISTRY_USER="wardwouts"
 IMAGE_NAME="${MANIFEST}"
-IMAGE_TAG="v${VERSION}"
 
 BUILDAH_VERSION=$(buildah --version | awk '{ sub(/^[^0-9]*/, ""); sub(/ .*/, ""); gsub(/\./, ""); print $1; }')
 
-if [ $BUILDAH_VERSION -lt 1190 ]; then
+if [ "$BUILDAH_VERSION" -lt 1190 ]; then
   echo "Buildah version too old for multi-arch manifests"
   exit
 fi
