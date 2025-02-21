@@ -19,7 +19,7 @@ unset TMPDIR # othewise buildah will try to use that and it doesn't work with an
 # koreader-2023.04-armhf.deb - arm32v7
 
 # Setup mapping from debian platform names to koreader platform names
-declare -A architectures=( [linux/amd64]="x86_64" [linux/arm64]="armv7l" )
+declare -A architectures=( [linux/amd64]="x86_64" [linux/arm64]="aarch64" )
 
 # Set your manifest name
 MANIFEST="koreader-novnc"
@@ -35,19 +35,23 @@ if [ "$BUILDAH_VERSION" -lt 1190 ]; then
   exit
 fi
 
-#buildah manifest create "${MANIFEST}"
+set +e
+buildah manifest rm "${MANIFEST}"
+buildah manifest create "${MANIFEST}"
+set -e
 
 for arch in "${!architectures[@]}"; do
   echo "Creating image for architecture ${arch}"
+  subarch=${arch#*/}
   echo buildah bud \
-    --tag "${IMAGE_NAME}:${VERSION}-linux-${architectures[$arch]}" \
+    --tag "${IMAGE_NAME}:${VERSION}-${subarch}" \
     --build-arg=VERSION="${VERSION}" \
     --build-arg=ARCH="${architectures[$arch]}" \
     --platform="${arch}" \
     --manifest="${MANIFEST}" \
     "${BUILD_PATH}"
   buildah bud \
-    --tag "${IMAGE_NAME}:${VERSION}-linux-${architectures[$arch]}" \
+    --tag "${IMAGE_NAME}:${VERSION}-${subarch}" \
     --build-arg=VERSION="${VERSION}" \
     --build-arg=ARCH="${architectures[$arch]}" \
     --platform="${arch}" \
