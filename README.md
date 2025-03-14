@@ -1,8 +1,8 @@
 # KOReader with novnc
 
-Run using something like this:
+Example usage:
 ```
-docker run -p 8080:8080 -v mybooks:/books:ro -v koreader_config:/config -v passwd:/passwd:ro --name koreader wardwouts/koreader-novnc
+docker run -p 8080:8080 -v mybooks:/books:ro -v koreader_config:/config -v passwd:/passwd:ro -v fonts:/usr/lib/koreader/fonts/myfonts --name koreader wardwouts/koreader-novnc
 ```
 
 This will make [koreader](<https://github.com/koreader/koreader>) available via novnc on <http://localhost:8080>.
@@ -25,6 +25,8 @@ x11vnc -storepasswd PASSWORD /passwd
 - `/books` the path where koreader will search for books by default (you can always browse). Can be read-only.
 - `/passwd` location of the vnc password file. You should create your own using `vncpasswd`. Can be read-only.
 - `/config` the path where koreader configuration is stored. Needs to be writeable by the container user (UID 1000).
+- `/usr/lib/koreaders/fonts` the path where koreader looks for its fonts. Use a subdir to mount additional ones, so
+  the regular ones are  where they are expected.
 
 ## Environment
 ### Cursor
