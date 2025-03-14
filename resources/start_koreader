@@ -4,5 +4,5 @@ if [ ! -f /home/user/.config/koreader/settings.reader.lua ]; then
     mkdir -p /home/user/.config/koreader
     cp /opt/settings.reader.lua /home/user/.config/koreader/settings.reader.lua
 fi
-sleep 5
+sleep 10
 exec /usr/bin/koreader
