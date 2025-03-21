@@ -45,3 +45,10 @@ docker run -p 8080:8080 --env EMULATE_READER_W="1400" --env EMULATE_READER_H="60
 
 ### PASSWD
 By default the varialbe `PASSWD` has the value `-rfbauth /passwd`. There could be cases where you want to overrule this, for instance when an alternative authentication layer is used (`-nopw`).
+
+### Timezone
+You can specify your timezone by setting the `TZ` environment variable:
+
+```
+docker run -p 8080:8080 --env TZ=Europe/Amsterdam -v mybooks:/books -v koreader_config:/config -v passwd:/passwd --name koreader wardwouts/koreader-novnc
+```
