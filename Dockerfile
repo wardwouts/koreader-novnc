@@ -21,6 +21,7 @@ RUN apt-get update \
         net-tools \
         iputils-ping \
         libsdl2-2.0-0 \
+        unzip \
     && echo $KOREADERURL \
     && wget -q $KOREADERURL -O /tmp/koreader.tar.xz \
     && cd /usr \
