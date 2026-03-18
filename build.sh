@@ -19,7 +19,7 @@ unset TMPDIR # othewise buildah will try to use that and it doesn't work with an
 # koreader-2023.04-armhf.deb - arm32v7
 
 # Setup mapping from debian platform names to koreader platform names
-declare -A architectures=( [linux/amd64]="x86_64" [linux/arm64]="aarch64" )
+declare -A architectures=( [linux/amd64]="x86_64" [linux/arm64]="arm64" )
 
 # Set your manifest name
 MANIFEST="koreader-novnc"
